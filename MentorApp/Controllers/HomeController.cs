@@ -16,9 +16,9 @@ namespace MentorApp.Controllers
         public IActionResult Index()
         {
 
-            var data = _context.Services.ToList();
+            var features = _context.Features.ToList();
             
-            return View();
+            return View(features);
         }
     }
 }

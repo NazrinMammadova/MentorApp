@@ -1,4 +1,5 @@
 ﻿using MentorApp.DAL;
+using MentorApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,10 +16,12 @@ namespace MentorApp.Controllers
 
         public IActionResult Index()
         {
-            var pricings = _context.Pricings.Include(p=>p.PricingServices).ToList();
+            PricingVM pricingVM = new PricingVM();
+            pricingVM.Pricings = _context.Pricings.Include(p=>p.PricingServices).ToList();
+            pricingVM.Services = _context.Services.ToList();
 
+            return View(pricingVM);
 
-            return View();
         }
 
     }

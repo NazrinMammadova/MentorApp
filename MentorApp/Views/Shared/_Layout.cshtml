@@ -58,12 +58,12 @@
 
                     <nav id="navbar" class="navbar order-last order-lg-0">
                         <ul>
-                            <li><a class="active" href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="courses.html">Courses</a></li>
-                            <li><a href="trainers.html">Trainers</a></li>
-                            <li><a href="events.html">Events</a></li>
-                            <li><a asp-controller="pricing" asp-action="index">Pricing</a></li>
+                            <li><a id="home"  asp-controller="home" asp-action="index">Home</a></li>
+                            <li><a id="about" href="about.html">About</a></li>
+                            <li><a id="courses" href="courses.html">Courses</a></li>
+                            <li><a id="trainers" href="trainers.html">Trainers</a></li>
+                            <li><a id="events" href="events.html">Events</a></li>
+                            <li><a id="pricing" asp-controller="pricing" asp-action="index">Pricing</a></li>
 
                             <li class="dropdown">
                                 <a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
@@ -188,9 +188,19 @@
             <!-- Template Main JS File -->
             <script src="~/assets/js/main.js"></script>
 
+           <script>
+               var path = window.location.pathname.split("/")[1];
+             if(path==""){
+                 
+                 document.getElementById("home").classList.add("active")
+
+             }
+             else
+             {
+                 document.getElementById(path).classList.add("active")
+             }
+           </script>
         </body>
 
-    </html>
-    </div>
 </body>
 </html>
